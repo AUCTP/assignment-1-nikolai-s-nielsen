@@ -1,3 +1,5 @@
+## Nikolai Sanchez Nielsen - student number: 202106262 ##
+
 import random
 
 items = ["Sandwich", "Salad", "Cake", "Coffee"]  #added one new item
@@ -28,6 +30,7 @@ for i in range(randomNumber):  # simulates the students one by one
     #    sales.append(item)
 
 print(f'\nThe list of sale ids are as follows: {sales}') # prints out the ids of the sold items from the list "items"
+print(f'\nTotal number of customers:', len(sales))
 
 
 def proces_sales(sales, prices):  # a new function which calculates the total revenue
