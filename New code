@@ -1,0 +1,30 @@
+# Task 1 and 2
+
+import random
+
+items = ["Sandwich", "Salad", "Juice"]
+prices = [30, 25, 15]
+inventories = [10, 8, 12]
+
+def simulate_customers(num_customers):
+    sales = []  # Gemmer ID'er for solgte varer (index i listen)
+    
+    for i in range(num_customers):
+        buys_something = random.random() < 0.5  # 50% chance
+        if buys_something:
+            item_id = random.randint(0, len(items) - 1)
+            
+            if inventories[item_id] > 0:
+                inventories[item_id] -= 1
+                sales.append(item_id)
+                print(f"Studerende {i+1} købte {items[item_id]}")
+            else:
+                print(f"Studerende {i+1} ville købe {items[item_id]}, men den er udsolgt.")
+        else:
+            print(f"Studerende {i+1} købte ikke noget.")
+
+    return sales
+
+sales_today = simulate_customers(15)
+
+print("\nDagens salg (item IDs):", sales_today)
