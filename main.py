@@ -35,15 +35,22 @@ print(f'\nTotal number of customers:', len(sales))
 
 def proces_sales(sales, prices):  # a new function which calculates the total revenue
 
-    return sum(prices[i] for i in sales if 0 <= i < len(prices))  # returns a sum of the sold items by taking the the ids from the sales list and match it with the index number from the prices list (with i being an index between 0 and 3 from the prices list)
+    return sum(prices[i] for i in sales if 0 <= i < len(prices))  # returns the sum of the sold items by taking the the ids from the sales list and match it with the index number from the prices list (with i being an index between 0 and 3 from the prices list)
 
 total_revenue = proces_sales(sales, prices)  # calls the new proces_sales function as the variable total_revenue
 print(f'\nTotal revenue: {total_revenue} DKK')  # prints out total_revenue
 
 
+#def cost_of_sales(prices, inventories):
+ #   for i in range(len(items)):
+  #      costs = prices[i] * inventories[i]
+   #     print(f'Costs are {costs} DKK')
+
+
 def generate_report(sales, items, prices, inventories):  # a new function which gathers the information from the former functions into one report
     print("\nSales summary of the day:")
     total_revenue = proces_sales(sales, prices)  # this is used to call the total_revenue which was calculated in the previous function (see line 51)
+#    cost_total = cost_of_sales(prices, inventories)
 
     print("\nSold items:")  # summarises total sales per item
     for i in range(len(items)):  # gathers the i values (4 values) from the items list
@@ -57,4 +64,26 @@ def generate_report(sales, items, prices, inventories):  # a new function which 
     for i in range(len(items)):  # # gathers the i values (4 values) from the items list
         print(f'{items[i]}: {inventories[i]} left')  # prints all the units left per item by referring back to the function, which subtracted and item from the inventory for every sale in the beginning of the code (see line 16)
 
+    #print(cost_total)
+
 generate_report(sales, items, prices, inventories)  # calls the generate_report function
+
+
+def total_cost(inventories, prices):
+    
+    total_cost = sum(inventories[i] * prices[i] / 2 for i in range(len(inventories)))
+    total_revenue = proces_sales(sales, prices)
+    print(f'\nTotal cost of remaining inventory: {total_cost}')
+    print(f'\nTotal profit: {total_revenue - total_cost}')
+    return total_cost
+
+total_cost(inventories, prices)
+
+## Alternative method ##
+#total_cost = 0
+
+#for i in range(len(items)):
+ #   costs = inventories[i] * prices[i] / 2
+#    total_cost += costs
+
+#print(f'\nTotal costs: {total_cost}')
